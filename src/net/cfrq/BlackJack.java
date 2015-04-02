@@ -18,8 +18,7 @@ public class BlackJack {
 
 	public static void main(String[] args) {
 
-		String playerName = "";
-		playerName = scanner.nextLine().trim();
+		String playerName = scanner.nextLine().trim();
 
 		while (!playerName.equalsIgnoreCase("quit")) {
 			// get locale
@@ -32,23 +31,23 @@ public class BlackJack {
 
 				// initialize hand counters
 				int playerAceCount = 0;
-				int playerHandScore = 0;
-				String playerHandString = "";
+				int playerHandScore;
+				String playerHandString;
 				int dealerAceCount = 0;
-				int dealerHandScore = 0;
-				String dealerHandString = "";
+				int dealerHandScore;
+				String dealerHandString;
 
 				// get and display dealer cards
 				int dealerCard1 = dealACard();
 				if (isAce(dealerCard1)) {
 					dealerAceCount++;
 				}
-				;
+
 				int dealerCard2 = dealACard();
 				if (isAce(dealerCard2)) {
 					dealerAceCount++;
 				}
-				;
+
 				dealerHandString = "XX " + formatCard(dealerCard2);
 				dealerHandScore = getCardScore(dealerCard1)
 						+ getCardScore(dealerCard2);
@@ -58,12 +57,12 @@ public class BlackJack {
 				if (isAce(playerCard1)) {
 					playerAceCount++;
 				}
-				;
+
 				int playerCard2 = dealACard();
 				if (isAce(playerCard2)) {
 					playerAceCount++;
 				}
-				;
+
 				playerHandString = formatCard(playerCard1) + " "
 						+ formatCard(playerCard2);
 
@@ -189,6 +188,20 @@ public class BlackJack {
 				}
 
 				System.out.println("Bank is now: " + bank);
+
+				String playAgain;
+				while (true) {
+					System.out.print("Play again? [Y/N] ");
+					playAgain = scanner.nextLine().trim();
+					if (playAgain.startsWith("y") || playAgain.startsWith("Y")
+							|| playAgain.startsWith("n") || playAgain.startsWith("N")) {
+						break;
+					}
+				}
+
+				if (playAgain.startsWith("n") || playAgain.startsWith("N")) {
+					break;
+				}
 			}
 		}
 	}
